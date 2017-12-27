@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from './components/app/App.js';
 import Login from './components/login/Login.js';
+import Register from './components/register/Register.js';
 import isAuthenticated from './firebase.js';
 
 
@@ -12,6 +13,7 @@ ReactDOM.render(
             <App />
             <Switch>
                 <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
             </Switch>
         </div>
     </BrowserRouter>

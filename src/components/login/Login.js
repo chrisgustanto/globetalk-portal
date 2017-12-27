@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase.js';
 import './Login.css';
+import Footer from '../footer/Footer.js'
 
 const INITIAL_STATE = {
   email: '',
@@ -31,15 +32,15 @@ export default class Login extends Component {
 
     return (
       <div className="login">
+
         <div className="text-center" id="loginText">
           <h3> ENTER GLOBETALK </h3>
         </div>
-
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
-          
+
           <div className="col-sm-8">
             <label className="username">Username</label>
-            <input type="text" id="username" className="form-control" value={email}
+            <input type="email" id="username" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
@@ -52,11 +53,10 @@ export default class Login extends Component {
           <div className="col-sm-8 text-center">
             <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Login </button>
           </div>
-          
-          {error && <p>{error.message}</p>}
 
         </form>
 
+        <Footer />
       </div>
     )
   }
