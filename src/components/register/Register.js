@@ -65,14 +65,14 @@ export default class Register extends Component {
           </div>
 
           <div className="col-sm-8 text-center">
-            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Register </button>
+            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Sign Up </button>
           </div>
 
           {error && <p>{error.message}</p>}
 
         </form>
         <Footer />
-        
+
       </div >
     )
   }
