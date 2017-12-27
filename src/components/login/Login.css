@@ -1,0 +1,9 @@
+#loginForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#loginForm div {
+    margin: 10px;
+}
