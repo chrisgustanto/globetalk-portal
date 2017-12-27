@@ -37,6 +37,8 @@ export default class Register extends Component {
   render() {
     const { email, password, error, passwordConfirmation } = this.state;
     const isInvalid = password === '' || email === '' || password !== passwordConfirmation;
+    const passwordsMatch = password === passwordConfirmation;
+    console.log(passwordsMatch)
 
     return (
       <div className="login">
@@ -48,7 +50,7 @@ export default class Register extends Component {
 
           <div className="col-sm-8">
             <label className="email">Username</label>
-            <input type="text" id="username" className="form-control" value={email}
+            <input type="email" id="username" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
@@ -58,9 +60,9 @@ export default class Register extends Component {
               onChange={event => this.setState({ 'password': event.target.value })} />
           </div>
 
-          <div className="col-sm-8">
+          <div className={passwordsMatch ? 'form-group has-ok has-feedback col-sm-8' : 'form-group has-error has-feedback col-sm-8'}>
             <label className="password">Password Confirmation </label>
-            <input type="password" id="passwordConfirmation" className="form-control" value={passwordConfirmation}
+            <input type="password" id="passwordConfirmation" className='form-control' value={passwordConfirmation}
               onChange={event => this.setState({ 'passwordConfirmation': event.target.value })} />
           </div>
 
