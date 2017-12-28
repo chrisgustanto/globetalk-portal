@@ -39,7 +39,7 @@ export default class Register extends Component {
   }
 
   render() {
-    const { email, password, error, passwordConfirmation } = this.state;
+    const { email, password, passwordConfirmation } = this.state;
     const isInvalid = password === '' || email === '' || password !== passwordConfirmation;
     const passwordsMatch = password === passwordConfirmation;
 
@@ -52,7 +52,7 @@ export default class Register extends Component {
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
 
           <div className="col-sm-6">
-            <label className="email">Username</label>
+            <label className="email">Email</label>
             <input type="email" id="username" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/login/Login.js';
 import Register from './components/register/Register.js';
 import Start from './components/start/Start.js';
@@ -16,7 +16,7 @@ ReactDOM.render(
             <Header />
             <NotificationContainer />
             <Switch>
-                <Route exact path="/" component={Login} />
+                <Route exact path="/" render={() => (<Redirect to="/login" />)} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/start" component={Start} />
