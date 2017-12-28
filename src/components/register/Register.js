@@ -22,13 +22,13 @@ export default class Register extends Component {
     auth.createUserWithEmailAndPassword(email, password).then((user) => {
       this.setState(() => ({ ...INITIAL_STATE }));
       this.sendVerificationEmail(user);
-      event.preventDefault();
+      NotificationManager.success('User Created! Please Verify Your Email', '', 3000);
+      this.props.history.push('/start');
     }).catch((error) => {
       this.setState({ 'error': error });
-      event.preventDefault();
       NotificationManager.error(error.message, '', 3000);
-
     });
+    event.preventDefault();
   }
 
   sendVerificationEmail(user) {
@@ -72,9 +72,6 @@ export default class Register extends Component {
           <div className="col-sm-6 text-center">
             <button type="submit" className="btn btn-sm btn-danger" disabled={isInvalid}> Sign Up </button>
           </div>
-
-          {error && <p>{error.message}</p>}
-
         </form>
         <Footer />
 

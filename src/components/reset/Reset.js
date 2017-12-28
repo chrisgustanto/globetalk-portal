@@ -19,6 +19,7 @@ export default class Login extends Component {
     console.log(email);
     auth.sendPasswordResetEmail(email).then(() => {
       this.setState(() => ({ ...INITIAL_STATE }));
+      NotificationManager.success('Password Reset Email Sent', '', 3000);
     }).catch((error) => {
       this.setState({ 'error': error });
       NotificationManager.error(error.message, '', 3000);
