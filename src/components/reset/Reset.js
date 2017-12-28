@@ -38,14 +38,14 @@ export default class Login extends Component {
         </div>
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
 
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <label className="email">Email</label>
             <input type="email" id="email" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
-          <div className="col-sm-8 text-center">
-            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Send Verification Email </button>
+          <div className="col-sm-6 text-center">
+            <button type="submit" className="btn btn-sm btn-danger" disabled={isInvalid}> Send Verification Email </button>
           </div>
 
         </form>

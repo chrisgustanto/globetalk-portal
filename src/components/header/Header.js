@@ -32,7 +32,7 @@ export default class Header extends Component {
   render() {
     const user = this.state.user;
     return (
-      <nav className="navbar navbar-inverse">
+      <nav className="navbar">
         <div className="container-fluid">
           <div className="navbar-header">
             <Link className="navbar-brand" to="/login">Globe Talk</Link>

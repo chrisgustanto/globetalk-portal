@@ -51,26 +51,26 @@ export default class Register extends Component {
 
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
 
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <label className="email">Username</label>
             <input type="email" id="username" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <label className="password">Password</label>
             <input type="password" id="password" className="form-control" value={password}
               onChange={event => this.setState({ 'password': event.target.value })} />
           </div>
 
-          <div className={passwordsMatch ? 'form-group has-ok has-feedback col-sm-8' : 'form-group has-error has-feedback col-sm-8'}>
+          <div className={passwordsMatch ? 'form-group has-ok has-feedback col-sm-6' : 'form-group has-error has-feedback col-sm-6'}>
             <label className="password">Password Confirmation </label>
             <input type="password" id="passwordConfirmation" className='form-control' value={passwordConfirmation}
               onChange={event => this.setState({ 'passwordConfirmation': event.target.value })} />
           </div>
 
-          <div className="col-sm-8 text-center">
-            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Sign Up </button>
+          <div className="col-sm-6 text-center">
+            <button type="submit" className="btn btn-sm btn-danger" disabled={isInvalid}> Sign Up </button>
           </div>
 
           {error && <p>{error.message}</p>}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase.js';
+
 import './Login.css';
+import '../../index.css';
+
 import Footer from '../footer/Footer.js'
 import { NotificationManager } from 'react-notifications';
 
@@ -40,20 +43,20 @@ export default class Login extends Component {
         </div>
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
 
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <label className="username">Email</label>
             <input type="email" id="username" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <label className="password">Password</label>
             <input type="password" id="password" className="form-control" value={password}
               onChange={event => this.setState({ 'password': event.target.value })} />
           </div>
 
-          <div className="col-sm-8 text-center">
-            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Login </button>
+          <div className="col-sm-6 text-center">
+            <button type="submit" className="btn btn-sm btn-danger" disabled={isInvalid}> Login </button>
           </div>
 
         </form>
