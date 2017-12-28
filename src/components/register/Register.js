@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { auth } from '../../firebase.js';
 import './Register.css';
 import Footer from '../footer/Footer.js'
+import { NotificationManager } from 'react-notifications';
 
 const INITIAL_STATE = {
   email: '',
@@ -17,14 +18,17 @@ export default class Register extends Component {
   }
 
   onSubmit = (event) => {
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password } = this.state;
     auth.createUserWithEmailAndPassword(email, password).then((user) => {
       this.setState(() => ({ ...INITIAL_STATE }));
       this.sendVerificationEmail(user);
+      event.preventDefault();
     }).catch((error) => {
       this.setState({ 'error': error });
+      event.preventDefault();
+      NotificationManager.error(error.message, '', 3000);
+
     });
-    event.preventDefault();
   }
 
   sendVerificationEmail(user) {
@@ -38,7 +42,6 @@ export default class Register extends Component {
     const { email, password, error, passwordConfirmation } = this.state;
     const isInvalid = password === '' || email === '' || password !== passwordConfirmation;
     const passwordsMatch = password === passwordConfirmation;
-    console.log(passwordsMatch)
 
     return (
       <div className="login">

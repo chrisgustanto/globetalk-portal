@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase.js';
-import './Login.css';
+import './Reset.css';
 import Footer from '../footer/Footer.js'
 import { NotificationManager } from 'react-notifications';
 
 const INITIAL_STATE = {
   email: '',
-  password: '',
-  error: null,
 };
 
 export default class Login extends Component {
@@ -17,10 +15,10 @@ export default class Login extends Component {
   }
 
   onSubmit = (event) => {
-    const { email, password, } = this.state;
-    auth.signInWithEmailAndPassword(email, password).then(() => {
+    const { email, } = this.state;
+    console.log(email);
+    auth.sendPasswordResetEmail(email).then(() => {
       this.setState(() => ({ ...INITIAL_STATE }));
-      this.props.history.push('/start');
     }).catch((error) => {
       this.setState({ 'error': error });
       NotificationManager.error(error.message, '', 3000);
@@ -29,8 +27,8 @@ export default class Login extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
-    const isInvalid = password === '' || email === '';
+    const { email, } = this.state;
+    const isInvalid = email === '';
 
     return (
       <div className="login">
@@ -41,22 +39,17 @@ export default class Login extends Component {
         <form onSubmit={this.onSubmit} id="loginForm" className="row">
 
           <div className="col-sm-8">
-            <label className="username">Email</label>
-            <input type="email" id="username" className="form-control" value={email}
+            <label className="email">Email</label>
+            <input type="email" id="email" className="form-control" value={email}
               onChange={event => this.setState({ 'email': event.target.value })} />
           </div>
 
-          <div className="col-sm-8">
-            <label className="password">Password</label>
-            <input type="password" id="password" className="form-control" value={password}
-              onChange={event => this.setState({ 'password': event.target.value })} />
-          </div>
-
           <div className="col-sm-8 text-center">
-            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Login </button>
+            <button type="submit" className="btn btn-sm btn-primary" disabled={isInvalid}> Send Verification Email </button>
           </div>
 
         </form>
+
         <Footer />
       </div>
     )
