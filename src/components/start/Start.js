@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase.js';
+import { auth, db } from '../../firebase.js';
 
 export default class Start extends Component {
 
@@ -11,7 +11,13 @@ export default class Start extends Component {
     auth.onAuthStateChanged((user) => {
       if (!user) {
         this.props.history.push('/login');
-      }
+      } 
+      // else {
+      //   console.log(user.uid)
+      //   db.ref('/users/' + user.uid).once('value').then(function(snapshot) {
+      //     console.log(snapshot.val().role);
+      //   });
+      // }
     });
   }
 
