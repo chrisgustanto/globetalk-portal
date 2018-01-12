@@ -1,0 +1,37 @@
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom right, #9ad791, #a7e99c);
+}
+
+.card-header {
+    background: linear-gradient(to bottom right, #C0C0C0, #D3D3D3);
+}
+
+.card-header a {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    color: white;
+}
+
+h3 {
+    margin: 10px;
+    color: white;
+    text-align: center;
+}
+
+h6 {
+    margin: 10px;
+    color: white;
+}
+
+#accordion {
+    margin-top: 50px;
+}

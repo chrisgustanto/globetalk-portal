@@ -43,13 +43,13 @@ export default class Header extends Component {
           </div>
           {user == null ? (
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="/register"><span className="glyphicon glyphicon-user"></span> Register </Link></li>
-              <li><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login </Link></li>
-              <li><Link to="/reset"><span className="glyphicon glyphicon-edit"></span> Reset Password </Link></li>
+              <li><Link to="/register"><span className="fa fa-user"></span> Register </Link></li>
+              <li><Link to="/login"><span className="fa fa-sign-in"></span> Login </Link></li>
+              <li><Link to="/reset"><span className="fa fa-edit"></span> Reset Password </Link></li>
             </ul>
           ) :
             <ul className="nav navbar-nav navbar-right">
-              <li onClick={this.logout}><Link to=""><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
+              <li onClick={this.logout}><Link to=""><span className="fa fa-sign-out"></span> Logout</Link></li>
             </ul>
           }
         </div>

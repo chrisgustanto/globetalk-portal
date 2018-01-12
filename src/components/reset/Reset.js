@@ -16,7 +16,6 @@ export default class Login extends Component {
 
   onSubmit = (event) => {
     const { email, } = this.state;
-    console.log(email);
     auth.sendPasswordResetEmail(email).then(() => {
       this.setState(() => ({ ...INITIAL_STATE }));
       NotificationManager.success('Password Reset Email Sent', '', 3000);
