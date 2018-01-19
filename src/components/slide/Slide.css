@@ -1,0 +1,52 @@
+.slide {
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+    top: 25%;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner {
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-left {
+    background-color: #78cde1;
+    color: white;
+    padding: 20px;
+    width: 50%;
+    height: 80%;
+    float: left;
+    text-align: center;
+}
+
+p {
+    margin: 20px 0px;
+    font-size: 12px;
+}
+
+.carousel-right {
+    width: 50%;
+    height: 80%;
+    float: right;
+}
+
+.carousel-right img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-indicators li {
+    color: #8B0000;
+}

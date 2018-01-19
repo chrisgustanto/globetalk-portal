@@ -1,0 +1,6 @@
+export const slideContent = [
+    { title: "INTRODUCTION", description: "" },
+    { title: "STEP 1: NAME", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisi nulla, feugiat eget consequat ac, venenatis ac nibh. Proin pretium ac neque in placerat. Sed in nisl eu quam finibus dignissim. Donec orci eros, accumsan eu vestibulum in, rhoncus vel est. Donec tempus consectetur auctor. Vivamus scelerisque lorem pretium urna faucibus posuere. Proin et sollicitudin mi." },
+    { title: "STEP 2: NAME", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisi nulla, feugiat eget consequat ac, venenatis ac nibh. Proin pretium ac neque in placerat. Sed in nisl eu quam finibus dignissim. Donec orci eros, accumsan eu vestibulum in, rhoncus vel est. Donec tempus consectetur auctor. Vivamus scelerisque lorem pretium urna faucibus posuere. Proin et sollicitudin mi." },
+    { title: "STEP 3: NAME", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nisi nulla, feugiat eget consequat ac, venenatis ac nibh. Proin pretium ac neque in placerat. Sed in nisl eu quam finibus dignissim. Donec orci eros, accumsan eu vestibulum in, rhoncus vel est. Donec tempus consectetur auctor. Vivamus scelerisque lorem pretium urna faucibus posuere. Proin et sollicitudin mi." },
+];

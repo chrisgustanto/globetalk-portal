@@ -7,6 +7,7 @@ import Start from './components/start/Start.js';
 import Reset from './components/reset/Reset.js';
 import Header from './components/header/Header.js';
 import Guide from './components/guide/Guide.js';
+import Slide from './components/slide/Slide.js';
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
@@ -22,6 +23,8 @@ ReactDOM.render(
                 <Route path="/register" component={Register} />
                 <Route path="/start" component={Start} />
                 <Route path="/guide" component={Guide} />
+                <Route path="/slide" component={Slide} />
+
                 <Route path="/reset" component={Reset} />
 
 
