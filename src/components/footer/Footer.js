@@ -5,7 +5,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <h4>CULTURAL UNDERSTANDING. PLURALISM. PEACE.</h4>
+        CULTURAL UNDERSTANDING. PLURALISM. PEACE.
       </div>
     )
   }

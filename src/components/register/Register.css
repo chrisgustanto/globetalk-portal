@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  flex:1;
 }
 
 .register-container-bg{
@@ -15,21 +16,177 @@
   z-index: -1;
   filter: blur(20px);
   overflow: hidden;
+  top: -5%;
+  left: -5%;
 }
 
-.register-box{
-  min-width: 750px;
-  min-height: 550px;
-  height: 550px;
-  border-radius: 15px;
-  overflow: hidden;
+.register-form-box{
   display: flex;
-  flex-direction: row;
+  background-color: white;
+  width: 375px;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 
+.form-title{
+  color: #41bbf4;
+  width: 100%;
+  text-align: center;
+}
 
-@media screen and (min-width: 768px) and (min-height: 680px){
+.email-label, .passwd-label, .passwd-match-label, .role-label{
+  display: block;
+  color: #7d8387;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.email-input, .passwd-input, .passwd-match-input, .role-input{
+  border-width: 0 0 3px 0;
+  border-color: black;
+  width: 100%;
+  outline: none;
+  background-color: white;
+}
+
+
+.role-input{
+    cursor: pointer;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.register-button, .learn-button{
+  border-radius: 30px;
+  height: 40px;
+  width: 140px;
+  border: 2px solid #41bbf4;
+  cursor: pointer;
+  background-color: transparent;
+  color: #41bbf4;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.register-button:hover:enabled{
+  color: white;
+  background-color: #41bbf4;
+}
+.register-button:active:enabled{
+  font-size: 0.65rem;
+}
+
+.register-button:disabled{
+  color: gray;
+  border-color:gray;
+}
+
+.learn-more-box{
+  display: flex;
+  background: rgba(47, 52, 56, 0.6);
+  width: 375px;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.globe-logo{
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin-top: 40px;
+}
+
+.learn-title, .logo-texts{
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.logo-texts{
+  font-size: 1rem;
+  margin-top:10px;
+}
+
+.learn-button:hover{
+  color: black;
+  background-color:white;
+}
+.learn-button:active{
+  font-size: 0.65rem;
+}
+
+@media screen and (max-width: 768px), (max-height: 680px){
+
+  .register-box{
+    width: 300px;
+    height: 760px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .register-form-box{
+    width: 300px;
+    height: 360px;
+    border-radius: 15px;
+  }
+
+  .form-title{
+    font-size: 1rem;
+  }
+  .email-label, .passwd-label, .passwd-match-label, .role-label{
+    font-size: 0.5rem;
+    margin-top: 10px;
+  }
+
+  .email-div, .passwd-div, .passwd-match-div, .role-div{
+    width: 220px;
+  }
+
+  .learn-button{
+    color: white;
+    border-color: white;
+  }
+
+  .learn-more-box{
+    width: 300px;
+    height: 360px;
+    border-radius: 15px;
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (min-height: 680px){
+
+  .register-box{
+    width: 750px;
+    height: 550px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
   .register-form-box{
     display: flex;
     background-color: white;
@@ -40,26 +197,12 @@
     justify-content: center;
   }
 
-  .register-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
   .form-title{
-    color: #41bbf4;
     font-size: 1.5rem;
-    width: 100%;
-    text-align: center;
   }
 
   .email-label, .passwd-label, .passwd-match-label, .role-label{
-    display: block;
-    color: #7d8387;
-    margin: 0;
     font-size: 0.7rem;
-    text-transform: uppercase;
     margin-top: 20px;
   }
 
@@ -67,77 +210,16 @@
     width: 250px;
   }
 
-  .email-input, .passwd-input, .passwd-match-input, .role-input{
-    border-width: 0 0 3px 0;
-    border-color: black;
-    width: 100%;
-    outline: none;
-    background-color: white;
-  }
-
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset;
-  }
-
-  .role-input{
-      cursor: pointer;
-  }
-
-  .register-button, .learn-button{
-    border-radius: 30px;
-    height: 40px;
-    width: 140px;
-    border: 2px solid #41bbf4;
-    cursor: pointer;
-    background-color: transparent;
-    color: #41bbf4;
-    font-size: 0.7rem;
-    letter-spacing: 0.1rem;
-    font-weight: bold;
+  .register-button{
     margin-top: 50px;
   }
 
-  .register-button:hover:enabled{
-    color: white;
-    background-color: #41bbf4;
-  }
-  .register-button:active{
-    font-size: 0.65rem;
-  }
-
-  .register-button:disabled{
-    color: gray;
-    border-color:gray;
-  }
-
   .learn-more-box{
-    display: flex;
-    background: rgba(47, 52, 56, 0.6);
-    width: 375px;
     height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .learn-title, .logo-texts{
-    font-size: 1.5rem;
-    color: white;
-    text-align: center;
   }
 
   .globe-logo{
-    display: block;
     margin-top: 60px;
-  }
-
-  .logo-texts{
-    font-size: 1rem;
-    margin-top:10px;
-  }
-
-
-  .globe-logo{
     width: 80px;
     height: 80px;
   }
@@ -146,13 +228,5 @@
     color: white;
     border-color: white;
     margin-top:96px;
-  }
-
-  .learn-button:hover{
-    color: black;
-    background-color:white;
-  }
-  .learn-button:active{
-    font-size: 0.65rem;
   }
 }
