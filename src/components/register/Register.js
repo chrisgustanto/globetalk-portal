@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { auth, db } from '../../firebase.js';
+import { connect } from 'react-redux';
+import { firebaseRegister } from '../../actions';
+import logo from '../../imgs/logo.png';
+import bg from '../../imgs/auth_bg.jpg';
 import './Register.css';
-import Footer from '../footer/Footer.js'
 import { roles } from '../common/roles.js';
-import { NotificationManager } from 'react-notifications';
 
 const INITIAL_STATE = {
   email: '',
   password: '',
   passwordConfirmation: '',
-  role: '',
+  role: 'student',
   error: null,
 };
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE };
@@ -21,79 +22,69 @@ export default class Register extends Component {
 
   onSubmit = (event) => {
     const { email, password, role } = this.state;
-    auth.createUserWithEmailAndPassword(email, password).then((user) => {
-      this.setState(() => ({ ...INITIAL_STATE }));
-      this.sendVerificationEmail(user);
-      this.saveUserRole(user, role);
-      NotificationManager.success('User Created! Please Verify Your Email', '', 3000);
-      this.props.history.push('/start');
-    }).catch((error) => {
-      this.setState({ 'error': error });
-      NotificationManager.error(error.message, '', 3000);
-    });
+    this.props.firebaseRegister(email, password, role);
     event.preventDefault();
   }
 
-  sendVerificationEmail(user) {
-    user.sendEmailVerification().then(() => {
-    }).catch((error) => {
-      console.log(error);
-    })
+  componentWillMount(){
+    if(this.props.auth)
+      this.props.history.replace('/start');
   }
 
-  saveUserRole(user, role) {
-    db.ref('users/' + user.uid).set({
-      username: user.email,
-      role: role
-    });
+  componentWillReceiveProps(nextProps){
+    if(!!nextProps.auth )
+      this.props.history.replace('/start');
   }
 
   render() {
     const { email, password, passwordConfirmation, role } = this.state;
     const isInvalid = password === '' || email === '' || password !== passwordConfirmation || role === '';
-    const passwordsMatch = password === passwordConfirmation;
 
     return (
-      <div className="login">
-        <div className="text-center" id="loginText">
-          <h3> ENTER GLOBETALK </h3>
+      <div className="register-container">
+        <img className="register-container-bg" src={bg} alt="background"/>
+        <div className="register-box">
+          <div className="register-form-box">
+            <div className="form-title">SIGN UP</div>
+            <form onSubmit={this.onSubmit} className="register-form">
+              <div className="email-div">
+                <label className="email-label">EMAIL ADDRESS</label>
+                <input type="email" className="email-input" value={email}
+                  onChange={event => this.setState({ 'email': event.target.value })} />
+              </div>
+              <div className="passwd-div">
+                <label className="passwd-label">Password</label>
+                <input type="password" className="passwd-input" value={password}
+                  onChange={event => this.setState({ 'password': event.target.value })} />
+              </div>
+              <div className="passwd-match-div">
+                <label className="passwd-match-label">Password Confirmation </label>
+                <input type="password" className='passwd-match-input' value={passwordConfirmation}
+                  onChange={event => this.setState({ 'passwordConfirmation': event.target.value })} />
+              </div>
+              <div className='role-div'>
+                <label className="role-label"> Role </label>
+                <select type="dropdown" className='role-input'
+                  onChange={event => this.setState({ 'role': event.target.value })}>
+                  {roles.map((role) => <option key={role} value={role}>{role}</option>)}
+                </select>
+              </div>
+              <button type="submit" className="register-button" disabled={isInvalid}>SIGN UP</button>
+            </form>
+          </div>
+          <div className="learn-more-box">
+            <div className="learn-title">Become A Part</div>
+            <div className="learn-title">Of Our Community</div>
+            <img className="globe-logo" src={logo} alt="globetalk-logo"/>
+            <div className="logo-texts">globe talk</div>
+            <button className="learn-button">LEARN MORE</button>
+          </div>
         </div>
-
-        <form onSubmit={this.onSubmit} id="loginForm" className="row">
-
-          <div className="col-sm-6">
-            <label className="email">Email</label>
-            <input type="email" id="username" className="form-control" value={email}
-              onChange={event => this.setState({ 'email': event.target.value })} />
-          </div>
-
-          <div className="col-sm-6">
-            <label className="password">Password</label>
-            <input type="password" id="password" className="form-control" value={password}
-              onChange={event => this.setState({ 'password': event.target.value })} />
-          </div>
-
-          <div className={passwordsMatch ? 'form-group has-ok has-feedback col-sm-6' : 'form-group has-error has-feedback col-sm-6'}>
-            <label className="password">Password Confirmation </label>
-            <input type="password" id="passwordConfirmation" className='form-control' value={passwordConfirmation}
-              onChange={event => this.setState({ 'passwordConfirmation': event.target.value })} />
-          </div>
-
-          <div className='col-sm-6'>
-            <label className="role"> Role </label>
-            <select type="dropdown" id="role" className='form-control'
-              onChange={event => this.setState({ 'role': event.target.value })}> 
-              {roles.map((role) => <option key={role} value={role}>{role}</option>)}
-            </select>
-          </div>
-
-          <div className="col-sm-6 text-center">
-            <button type="submit" className="btn btn-sm btn-danger" disabled={isInvalid}> Sign Up </button>
-          </div>
-        </form>
-        <Footer />
-
-      </div >
+      </div>
     )
   }
-}
+};
+
+const mapStateToProps = ({auth}) => ({auth});
+
+export default connect(mapStateToProps, {firebaseRegister})(Register);

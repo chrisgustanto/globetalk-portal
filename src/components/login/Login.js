@@ -3,8 +3,6 @@ import { auth } from '../../firebase.js';
 
 import './Login.css';
 import '../../index.css';
-
-import Footer from '../footer/Footer.js'
 import { NotificationManager } from 'react-notifications';
 
 const INITIAL_STATE = {
@@ -60,7 +58,6 @@ export default class Login extends Component {
           </div>
 
         </form>
-        <Footer />
       </div>
     )
   }
