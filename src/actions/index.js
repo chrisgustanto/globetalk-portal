@@ -19,14 +19,14 @@ export const firebaseRegister = (email, password, role) => (dispatch, getState, 
         username: user.email,
         role: role
       });
-      dispatch({
+      NotificationManager.success('User Created! Please Verify Your Email','',5000, dispatch({
         type: FIRE_AUTH,
         payload: user
-      });
+      }));
     })
     .catch((error) => {
       console.log(error);
-      NotificationManager.error(error.message, '', 3000);
+      NotificationManager.error(error.message, '', 4000);
     });
 };
 
